@@ -9,15 +9,15 @@ type StatCardProps = {
 
 export function StatCard({ title, value, description, icon }: StatCardProps) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="rounded-lg border border-brand-navy/10 bg-white p-5 shadow-sm">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-medium text-slate-500">{title}</p>
-          <p className="mt-2 text-3xl font-semibold tracking-normal text-slate-950">{value}</p>
+          <p className="text-sm font-medium text-brand-muted">{title}</p>
+          <p className="mt-2 text-3xl font-semibold tracking-normal text-brand-navy">{value}</p>
         </div>
-        <div className="rounded-lg bg-cyan-50 p-3 text-cyan-700">{icon}</div>
+        <div className="rounded-lg bg-brand-red/10 p-3 text-brand-red">{icon}</div>
       </div>
-      <p className="mt-3 text-sm text-slate-500">{description}</p>
+      <p className="mt-3 text-sm text-brand-muted">{description}</p>
     </div>
   )
 }

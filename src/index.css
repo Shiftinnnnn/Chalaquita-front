@@ -1,11 +1,26 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-brand-navy: #011c40;
+  --color-brand-navy-hover: #062b5f;
+  --color-brand-red: #bf0a19;
+  --color-brand-red-hover: #9f0814;
+  --color-brand-surface: #f6f8fb;
+  --color-brand-panel: #eef3f8;
+  --color-brand-line: #dce6f0;
+  --color-brand-text: #12345a;
+  --color-brand-soft-text: #2a4868;
+  --color-brand-muted: #60748c;
+  --color-brand-icon: #8a9aaf;
+}
+
 @layer base {
   :root {
     font-family:
       Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: #0f172a;
-    background: #f8fafc;
+    color: var(--color-brand-navy);
+    background: var(--color-brand-surface);
+    --brand-navy-rgb: 1 28 64;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -31,22 +46,26 @@
 
 @layer components {
   .field-label {
-    @apply text-xs font-semibold uppercase tracking-normal text-slate-500;
+    @apply text-xs font-semibold uppercase tracking-normal text-brand-muted;
   }
 
   .field-input {
-    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-cyan-500 focus:ring-2 focus:ring-cyan-100;
+    @apply w-full rounded-lg border border-brand-navy/20 bg-white px-3 py-2 text-sm text-brand-navy outline-none transition focus:border-brand-red focus:ring-2 focus:ring-brand-red/15;
   }
 
   .primary-button {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand-navy px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-navy-hover disabled:cursor-not-allowed disabled:bg-brand-navy/35;
   }
 
   .secondary-button {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-brand-navy/20 bg-white px-4 py-2 text-sm font-semibold text-brand-text shadow-sm hover:bg-brand-surface;
   }
 
   .accent-button {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-600;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-red-hover;
+  }
+
+  .admin-login-panel {
+    background: linear-gradient(135deg, var(--color-brand-navy), var(--color-brand-navy-hover));
   }
 }

@@ -58,7 +58,7 @@ export function QuotationsPage() {
     { header: 'Cliente', cell: (quotation) => quotation.customerName },
     {
       header: 'Producto',
-      cell: (quotation) => <span className="font-semibold text-slate-950">{quotation.productName}</span>,
+      cell: (quotation) => <span className="font-semibold text-brand-navy">{quotation.productName}</span>,
     },
     { header: 'Precio', cell: (quotation) => formatUsd(quotation.productPriceUsd) },
     { header: 'Peso', cell: (quotation) => `${quotation.estimatedWeight} kg` },
@@ -72,21 +72,21 @@ export function QuotationsPage() {
         <div className="flex min-w-52 flex-wrap gap-2">
           <button
             type="button"
-            className="rounded-lg bg-emerald-50 px-2.5 py-1.5 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+            className="rounded-lg bg-brand-navy/10 px-2.5 py-1.5 text-xs font-semibold text-brand-navy hover:bg-brand-navy/15"
             onClick={() => updateQuotationStatus(quotation.id, 'APPROVED')}
           >
             Aprobar
           </button>
           <button
             type="button"
-            className="rounded-lg bg-rose-50 px-2.5 py-1.5 text-xs font-semibold text-rose-700 hover:bg-rose-100"
+            className="rounded-lg bg-brand-red/10 px-2.5 py-1.5 text-xs font-semibold text-brand-red hover:bg-brand-red/15"
             onClick={() => updateQuotationStatus(quotation.id, 'REJECTED')}
           >
             Rechazar
           </button>
           <button
             type="button"
-            className="rounded-lg bg-cyan-50 px-2.5 py-1.5 text-xs font-semibold text-cyan-700 hover:bg-cyan-100 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg bg-brand-red/10 px-2.5 py-1.5 text-xs font-semibold text-brand-red hover:bg-brand-red/15 disabled:cursor-not-allowed disabled:opacity-50"
             onClick={() => convertQuotationToOrder(quotation)}
             disabled={quotation.status === 'CONVERTED_TO_ORDER'}
           >
@@ -112,7 +112,7 @@ export function QuotationsPage() {
       />
 
       {isFormOpen ? (
-        <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+        <section className="rounded-lg border border-brand-navy/10 bg-white p-5 shadow-sm">
           <form onSubmit={handleSubmit} className="grid gap-4 lg:grid-cols-4">
             <label className="block lg:col-span-2">
               <span className="field-label">Cliente</span>
@@ -198,8 +198,8 @@ export function QuotationsPage() {
                 onChange={(event) => setForm((current) => ({ ...current, estimatedDays: event.target.value }))}
               />
             </label>
-            <div className="rounded-lg bg-slate-950 p-4 text-white lg:col-span-2">
-              <p className="flex items-center gap-2 text-sm font-semibold text-cyan-200">
+            <div className="rounded-lg bg-brand-navy p-4 text-white lg:col-span-2">
+              <p className="flex items-center gap-2 text-sm font-semibold text-white/75">
                 <CircleDollarSign className="size-4" aria-hidden="true" />
                 Total calculado
               </p>
@@ -219,11 +219,11 @@ export function QuotationsPage() {
         </section>
       ) : null}
 
-      <section className="flex flex-wrap gap-2 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+      <section className="flex flex-wrap gap-2 rounded-lg border border-brand-navy/10 bg-white p-4 shadow-sm">
         <button
           type="button"
           className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
-            statusFilter === 'ALL' ? 'bg-slate-950 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+            statusFilter === 'ALL' ? 'bg-brand-navy text-white' : 'bg-brand-panel text-brand-text hover:bg-brand-line'
           }`}
           onClick={() => setStatusFilter('ALL')}
         >
@@ -234,7 +234,7 @@ export function QuotationsPage() {
             key={status}
             type="button"
             className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
-              statusFilter === status ? 'bg-slate-950 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              statusFilter === status ? 'bg-brand-navy text-white' : 'bg-brand-panel text-brand-text hover:bg-brand-line'
             }`}
             onClick={() => setStatusFilter(status)}
           >
@@ -250,7 +250,7 @@ export function QuotationsPage() {
         emptyText="No hay cotizaciones con este filtro."
       />
 
-      <div className="rounded-lg border border-cyan-100 bg-cyan-50 p-4 text-sm text-cyan-900">
+      <div className="rounded-lg border border-brand-red/15 bg-brand-red/10 p-4 text-sm text-brand-text">
         <p className="flex items-center gap-2 font-semibold">
           <ArrowRight className="size-4" aria-hidden="true" />
           Las acciones son simuladas en frontend para mostrar el flujo comercial de la primera versión.

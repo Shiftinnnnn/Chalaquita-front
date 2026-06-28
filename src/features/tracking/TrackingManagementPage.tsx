@@ -59,11 +59,11 @@ export function TrackingManagementPage() {
 
       <section className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
         <aside className="space-y-4">
-          <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <div className="rounded-lg border border-brand-navy/10 bg-white p-4 shadow-sm">
             <label className="block">
               <span className="field-label">Buscar paquete</span>
               <div className="relative mt-2">
-                <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+                <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand-icon" />
                 <input
                   className="field-input pl-9"
                   value={searchTerm}
@@ -81,8 +81,8 @@ export function TrackingManagementPage() {
                 type="button"
                 className={`w-full rounded-lg border p-4 text-left shadow-sm transition ${
                   selectedPackage?.packageCode === packageItem.packageCode
-                    ? 'border-cyan-300 bg-cyan-50'
-                    : 'border-slate-200 bg-white hover:bg-slate-50'
+                    ? 'border-brand-red/35 bg-brand-red/10'
+                    : 'border-brand-navy/10 bg-white hover:bg-brand-surface'
                 }`}
                 onClick={() => {
                   setSelectedPackageCode(packageItem.packageCode)
@@ -91,12 +91,12 @@ export function TrackingManagementPage() {
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="font-semibold text-slate-950">{packageItem.packageCode}</p>
-                    <p className="mt-1 text-sm text-slate-500">{packageItem.customerName}</p>
+                    <p className="font-semibold text-brand-navy">{packageItem.packageCode}</p>
+                    <p className="mt-1 text-sm text-brand-muted">{packageItem.customerName}</p>
                   </div>
                   <StatusBadge status={packageItem.status} />
                 </div>
-                <p className="mt-3 flex items-center gap-1.5 text-xs text-slate-500">
+                <p className="mt-3 flex items-center gap-1.5 text-xs text-brand-muted">
                   <MapPin className="size-3.5" aria-hidden="true" />
                   {packageItem.currentLocation}
                 </p>
@@ -108,26 +108,26 @@ export function TrackingManagementPage() {
         <section className="space-y-5">
           {selectedPackage ? (
             <>
-              <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="rounded-lg border border-brand-navy/10 bg-white p-5 shadow-sm">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <p className="text-sm font-semibold text-cyan-700">{selectedPackage.packageCode}</p>
-                    <h2 className="mt-1 text-xl font-semibold tracking-normal text-slate-950">
+                    <p className="text-sm font-semibold text-brand-red">{selectedPackage.packageCode}</p>
+                    <h2 className="mt-1 text-xl font-semibold tracking-normal text-brand-navy">
                       {selectedPackage.description}
                     </h2>
-                    <p className="mt-2 text-sm text-slate-500">
+                    <p className="mt-2 text-sm text-brand-muted">
                       Cliente: {selectedPackage.customerName} · Pedido: {selectedPackage.orderCode}
                     </p>
-                    <p className="mt-2 break-all text-xs text-slate-500">{getTrackingUrl(selectedPackage.packageCode)}</p>
+                    <p className="mt-2 break-all text-xs text-brand-muted">{getTrackingUrl(selectedPackage.packageCode)}</p>
                   </div>
                   <StatusBadge status={selectedPackage.status} />
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <form onSubmit={handleSubmit} className="rounded-lg border border-brand-navy/10 bg-white p-5 shadow-sm">
                 <div className="flex items-center gap-2">
-                  <Send className="size-5 text-cyan-700" aria-hidden="true" />
-                  <h3 className="text-lg font-semibold tracking-normal text-slate-950">Registrar avance</h3>
+                  <Send className="size-5 text-brand-red" aria-hidden="true" />
+                  <h3 className="text-lg font-semibold tracking-normal text-brand-navy">Registrar avance</h3>
                 </div>
                 <div className="mt-5 grid gap-4 md:grid-cols-2">
                   <label className="block">
@@ -183,15 +183,15 @@ export function TrackingManagementPage() {
                 </button>
               </form>
 
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-                <h3 className="text-lg font-semibold tracking-normal text-slate-950">Timeline de eventos</h3>
+              <div className="rounded-lg border border-brand-navy/10 bg-brand-surface p-5">
+                <h3 className="text-lg font-semibold tracking-normal text-brand-navy">Timeline de eventos</h3>
                 <div className="mt-5">
                   <Timeline events={selectedEvents} />
                 </div>
               </div>
             </>
           ) : (
-            <div className="rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">
+            <div className="rounded-lg border border-dashed border-brand-navy/20 bg-white p-8 text-center text-sm text-brand-muted">
               Selecciona un paquete para gestionar su tracking.
             </div>
           )}

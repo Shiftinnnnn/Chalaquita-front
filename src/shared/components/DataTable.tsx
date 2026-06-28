@@ -15,16 +15,16 @@ type DataTableProps<T> = {
 
 export function DataTable<T>({ data, columns, getRowKey, emptyText = 'No hay datos para mostrar.' }: DataTableProps<T>) {
   return (
-    <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-lg border border-brand-navy/10 bg-white shadow-sm">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-slate-200 text-left text-sm">
-          <thead className="bg-slate-50">
+        <table className="min-w-full divide-y divide-brand-navy/10 text-left text-sm">
+          <thead className="bg-brand-surface">
             <tr>
               {columns.map((column) => (
                 <th
                   key={column.header}
                   scope="col"
-                  className={`whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-normal text-slate-500 ${
+                  className={`whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-normal text-brand-muted ${
                     column.className ?? ''
                   }`}
                 >
@@ -33,11 +33,11 @@ export function DataTable<T>({ data, columns, getRowKey, emptyText = 'No hay dat
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-brand-navy/10">
             {data.map((item) => (
-              <tr key={getRowKey(item)} className="hover:bg-slate-50">
+              <tr key={getRowKey(item)} className="hover:bg-brand-surface">
                 {columns.map((column) => (
-                  <td key={column.header} className={`px-4 py-3 text-slate-700 ${column.className ?? ''}`}>
+                  <td key={column.header} className={`px-4 py-3 text-brand-text ${column.className ?? ''}`}>
                     {column.cell(item)}
                   </td>
                 ))}
@@ -46,7 +46,7 @@ export function DataTable<T>({ data, columns, getRowKey, emptyText = 'No hay dat
           </tbody>
         </table>
       </div>
-      {!data.length ? <div className="p-6 text-center text-sm text-slate-500">{emptyText}</div> : null}
+      {!data.length ? <div className="p-6 text-center text-sm text-brand-muted">{emptyText}</div> : null}
     </div>
   )
 }

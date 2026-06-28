@@ -10,6 +10,7 @@ import {
   X,
 } from 'lucide-react'
 import { Link, NavLink } from 'react-router'
+import { BrandLogo } from './BrandLogo'
 
 type AppSidebarProps = {
   isOpen: boolean
@@ -29,28 +30,26 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   return (
     <>
       <div
-        className={`fixed inset-0 z-30 bg-slate-950/40 lg:hidden ${isOpen ? 'block' : 'hidden'}`}
+        className={`fixed inset-0 z-30 bg-brand-navy/40 lg:hidden ${isOpen ? 'block' : 'hidden'}`}
         onClick={onClose}
         aria-hidden="true"
       />
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-72 flex-col border-r border-slate-200 bg-slate-950 text-white transition-transform duration-200 lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-72 flex-col border-r border-brand-navy/10 bg-brand-navy text-white transition-transform duration-200 lg:static lg:translate-x-0 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="flex h-16 items-center justify-between border-b border-white/10 px-5">
           <Link to="/admin/dashboard" className="flex items-center gap-3" onClick={onClose}>
-            <span className="flex size-10 items-center justify-center rounded-lg bg-cyan-500 text-sm font-bold text-slate-950">
-              CE
-            </span>
+            <BrandLogo />
             <span>
               <span className="block text-sm font-semibold">Chalaquita Express</span>
-              <span className="block text-xs text-cyan-200">Panel operativo</span>
+              <span className="block text-xs text-white/75">Panel operativo</span>
             </span>
           </Link>
           <button
             type="button"
-            className="rounded-lg p-2 text-slate-300 hover:bg-white/10 hover:text-white lg:hidden"
+            className="rounded-lg p-2 text-white/70 hover:bg-white/10 hover:text-white lg:hidden"
             onClick={onClose}
             aria-label="Cerrar navegación"
             title="Cerrar navegación"
@@ -70,8 +69,8 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
                     isActive
-                      ? 'bg-cyan-400 text-slate-950'
-                      : 'text-slate-300 hover:bg-white/10 hover:text-white'
+                      ? 'bg-brand-red text-white'
+                      : 'text-white/70 hover:bg-white/10 hover:text-white'
                   }`
                 }
               >
@@ -91,11 +90,11 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
             Página pública
           </Link>
           <div className="mt-4 rounded-lg bg-white/5 p-3">
-            <div className="flex items-center gap-2 text-xs font-semibold text-cyan-200">
+            <div className="flex items-center gap-2 text-xs font-semibold text-white/75">
               <BarChart3 className="size-4" aria-hidden="true" />
               Primera versión
             </div>
-            <p className="mt-2 text-xs leading-5 text-slate-300">Panel interno + tracking público para clientes.</p>
+            <p className="mt-2 text-xs leading-5 text-white/70">Panel interno + tracking público para clientes.</p>
           </div>
         </div>
       </aside>

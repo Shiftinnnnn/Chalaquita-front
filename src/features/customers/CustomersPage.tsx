@@ -31,7 +31,7 @@ export function CustomersPage() {
   }, [customers, searchTerm])
 
   const columns: DataTableColumn<Customer>[] = [
-    { header: 'Cliente', cell: (customer) => <span className="font-semibold text-slate-950">{customer.name}</span> },
+    { header: 'Cliente', cell: (customer) => <span className="font-semibold text-brand-navy">{customer.name}</span> },
     { header: 'Correo', cell: (customer) => customer.email },
     { header: 'Teléfono', cell: (customer) => customer.phone },
     { header: 'DNI/RUC', cell: (customer) => customer.documentNumber },
@@ -60,11 +60,11 @@ export function CustomersPage() {
         }
       />
 
-      <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+      <section className="rounded-lg border border-brand-navy/10 bg-white p-4 shadow-sm">
         <label className="block max-w-xl">
           <span className="field-label">Buscar cliente</span>
           <div className="relative mt-2">
-            <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-brand-icon" />
             <input
               className="field-input pl-9"
               value={searchTerm}
@@ -83,16 +83,16 @@ export function CustomersPage() {
       />
 
       {isModalOpen ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-navy/50 p-4">
           <form onSubmit={handleSubmit} className="w-full max-w-lg rounded-lg bg-white p-6 shadow-xl">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold text-cyan-700">Nuevo cliente</p>
-                <h2 className="mt-1 text-xl font-semibold tracking-normal text-slate-950">Registrar cliente</h2>
+                <p className="text-sm font-semibold text-brand-red">Nuevo cliente</p>
+                <h2 className="mt-1 text-xl font-semibold tracking-normal text-brand-navy">Registrar cliente</h2>
               </div>
               <button
                 type="button"
-                className="rounded-lg p-2 text-slate-500 hover:bg-slate-100"
+                className="rounded-lg p-2 text-brand-muted hover:bg-brand-panel"
                 onClick={() => setIsModalOpen(false)}
                 aria-label="Cerrar modal"
                 title="Cerrar"

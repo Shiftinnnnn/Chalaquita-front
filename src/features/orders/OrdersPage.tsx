@@ -37,7 +37,7 @@ export function OrdersPage() {
   }
 
   const columns: DataTableColumn<Order>[] = [
-    { header: 'Código', cell: (order) => <span className="font-semibold text-slate-950">{order.orderCode}</span> },
+    { header: 'Código', cell: (order) => <span className="font-semibold text-brand-navy">{order.orderCode}</span> },
     { header: 'Cliente', cell: (order) => order.customerName },
     { header: 'Producto', cell: (order) => order.productName },
     { header: 'Monto', cell: (order) => formatUsd(order.totalUsd) },
@@ -69,7 +69,7 @@ export function OrdersPage() {
       />
 
       {isFormOpen ? (
-        <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+        <section className="rounded-lg border border-brand-navy/10 bg-white p-5 shadow-sm">
           <form onSubmit={handleSubmit} className="grid gap-4 md:grid-cols-3">
             <label className="block">
               <span className="field-label">Cliente</span>
@@ -120,16 +120,16 @@ export function OrdersPage() {
       <DataTable data={orders} columns={columns} getRowKey={(order) => order.id} />
 
       {selectedOrder ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-navy/50 p-4">
           <section className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white p-6 shadow-xl">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold text-cyan-700">{selectedOrder.orderCode}</p>
-                <h2 className="mt-1 text-xl font-semibold tracking-normal text-slate-950">Detalle de pedido</h2>
+                <p className="text-sm font-semibold text-brand-red">{selectedOrder.orderCode}</p>
+                <h2 className="mt-1 text-xl font-semibold tracking-normal text-brand-navy">Detalle de pedido</h2>
               </div>
               <button
                 type="button"
-                className="rounded-lg p-2 text-slate-500 hover:bg-slate-100"
+                className="rounded-lg p-2 text-brand-muted hover:bg-brand-panel"
                 onClick={() => setSelectedOrder(null)}
                 aria-label="Cerrar detalle"
                 title="Cerrar"
@@ -139,46 +139,46 @@ export function OrdersPage() {
             </div>
 
             <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg border border-slate-200 p-4">
+              <div className="rounded-lg border border-brand-navy/10 p-4">
                 <p className="field-label">Cliente</p>
-                <p className="mt-2 font-semibold text-slate-950">{selectedOrder.customerName}</p>
+                <p className="mt-2 font-semibold text-brand-navy">{selectedOrder.customerName}</p>
               </div>
-              <div className="rounded-lg border border-slate-200 p-4">
+              <div className="rounded-lg border border-brand-navy/10 p-4">
                 <p className="field-label">Estado actual</p>
                 <div className="mt-2">
                   <StatusBadge status={selectedOrder.status} />
                 </div>
               </div>
-              <div className="rounded-lg border border-slate-200 p-4">
+              <div className="rounded-lg border border-brand-navy/10 p-4">
                 <p className="field-label">Producto</p>
-                <p className="mt-2 font-semibold text-slate-950">{selectedOrder.productName}</p>
+                <p className="mt-2 font-semibold text-brand-navy">{selectedOrder.productName}</p>
               </div>
-              <div className="rounded-lg border border-slate-200 p-4">
+              <div className="rounded-lg border border-brand-navy/10 p-4">
                 <p className="field-label">Resumen</p>
-                <p className="mt-2 text-sm text-slate-600">
+                <p className="mt-2 text-sm text-brand-soft-text">
                   Total {formatUsd(selectedOrder.totalUsd)} registrado el {formatDate(selectedOrder.createdAt)}.
                 </p>
               </div>
             </div>
 
             <div className="mt-6">
-              <h3 className="text-sm font-semibold uppercase tracking-normal text-slate-500">Paquetes asociados</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-normal text-brand-muted">Paquetes asociados</h3>
               <div className="mt-3 space-y-3">
                 {relatedPackages.length ? (
                   relatedPackages.map((packageItem) => (
                     <div
                       key={packageItem.id}
-                      className="flex flex-col gap-3 rounded-lg border border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between"
+                      className="flex flex-col gap-3 rounded-lg border border-brand-navy/10 p-4 sm:flex-row sm:items-center sm:justify-between"
                     >
                       <div>
-                        <p className="font-semibold text-slate-950">{packageItem.packageCode}</p>
-                        <p className="mt-1 text-sm text-slate-500">{packageItem.description}</p>
+                        <p className="font-semibold text-brand-navy">{packageItem.packageCode}</p>
+                        <p className="mt-1 text-sm text-brand-muted">{packageItem.description}</p>
                       </div>
                       <StatusBadge status={packageItem.status} />
                     </div>
                   ))
                 ) : (
-                  <p className="rounded-lg border border-dashed border-slate-300 p-4 text-sm text-slate-500">
+                  <p className="rounded-lg border border-dashed border-brand-navy/20 p-4 text-sm text-brand-muted">
                     Este pedido aún no tiene paquetes registrados.
                   </p>
                 )}

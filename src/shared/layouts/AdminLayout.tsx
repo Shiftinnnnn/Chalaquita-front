@@ -7,7 +7,7 @@ export function AdminLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 lg:flex">
+    <div className="min-h-screen bg-brand-panel text-brand-navy lg:flex">
       <AppSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       <div className="min-w-0 flex-1">
         <AppHeader onMenuClick={() => setIsSidebarOpen(true)} />

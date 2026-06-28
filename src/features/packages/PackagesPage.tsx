@@ -52,7 +52,7 @@ export function PackagesPage() {
   const columns: DataTableColumn<Package>[] = [
     {
       header: 'Paquete',
-      cell: (packageItem) => <span className="font-semibold text-slate-950">{packageItem.packageCode}</span>,
+      cell: (packageItem) => <span className="font-semibold text-brand-navy">{packageItem.packageCode}</span>,
     },
     { header: 'Pedido', cell: (packageItem) => packageItem.orderCode },
     { header: 'Cliente', cell: (packageItem) => packageItem.customerName },
@@ -101,13 +101,13 @@ export function PackagesPage() {
       />
 
       {copyMessage ? (
-        <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm font-medium text-emerald-800">
+        <div className="rounded-lg border border-brand-navy/15 bg-brand-navy/10 p-3 text-sm font-medium text-brand-navy">
           {copyMessage}
         </div>
       ) : null}
 
       {isFormOpen ? (
-        <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+        <section className="rounded-lg border border-brand-navy/10 bg-white p-5 shadow-sm">
           <form onSubmit={handleSubmit} className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <label className="block">
               <span className="field-label">Pedido</span>
@@ -179,18 +179,18 @@ export function PackagesPage() {
       <DataTable data={packages} columns={columns} getRowKey={(packageItem) => packageItem.id} />
 
       {selectedPackage ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-navy/50 p-4">
           <section className="w-full max-w-md rounded-lg bg-white p-6 text-center shadow-xl">
             <div className="flex items-start justify-between gap-4 text-left">
               <div>
-                <p className="text-sm font-semibold text-cyan-700">QR de tracking</p>
-                <h2 className="mt-1 text-xl font-semibold tracking-normal text-slate-950">
+                <p className="text-sm font-semibold text-brand-red">QR de tracking</p>
+                <h2 className="mt-1 text-xl font-semibold tracking-normal text-brand-navy">
                   {selectedPackage.packageCode}
                 </h2>
               </div>
               <button
                 type="button"
-                className="rounded-lg p-2 text-slate-500 hover:bg-slate-100"
+                className="rounded-lg p-2 text-brand-muted hover:bg-brand-panel"
                 onClick={() => setSelectedPackage(null)}
                 aria-label="Cerrar QR"
                 title="Cerrar"
@@ -198,10 +198,10 @@ export function PackagesPage() {
                 <X className="size-5" aria-hidden="true" />
               </button>
             </div>
-            <div className="mt-6 inline-flex rounded-lg border border-slate-200 bg-white p-4">
+            <div className="mt-6 inline-flex rounded-lg border border-brand-navy/10 bg-white p-4">
               <QRCodeSVG value={getTrackingUrl(selectedPackage.packageCode)} size={180} />
             </div>
-            <p className="mt-4 break-all rounded-lg bg-slate-50 p-3 text-sm text-slate-600">
+            <p className="mt-4 break-all rounded-lg bg-brand-surface p-3 text-sm text-brand-soft-text">
               {getTrackingUrl(selectedPackage.packageCode)}
             </p>
             <button
